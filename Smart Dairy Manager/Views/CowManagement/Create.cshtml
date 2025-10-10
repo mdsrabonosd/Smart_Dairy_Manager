@@ -1,0 +1,82 @@
+﻿@model Smart_Dairy_Manager.Data_model.Cow
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@if (TempData["srabonmsg"] != null)
+{
+    <div class="alert alert-warning alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+        @TempData["srabonmsg"]
+    </div>
+}
+
+
+<div class="container-fluid"
+     style="background-image: url('/image/4396574.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;">
+
+    <div class="row w-100">
+        <div class="col-md-8 offset-md-2">
+
+            <div class="card" style="background-color: rgba(255, 255, 255, 0.9); border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.3);">
+                <div class="card-body p-4">
+
+                    <h3 class="text-center mb-4">Add New Cow Information</h3>
+
+                    <form asp-action="Create" asp-controller="CowManagement" method="post">
+                        <div class="form-group mb-3">
+                            <label for="Gender">Cow Gender</label>
+                            <select class="form-control" id="Gender" name="Gender">
+                                <option value="">-- Select Gender --</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="DateOfBirth">Date of Birth</label>
+                                <input type="date" class="form-control" id="DateOfBirth" name="DateOfBirth" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")">
+                            </div>
+
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="PurchaseDate">Purchase Date</label>
+                                <input type="date" class="form-control" id="PurchaseDate" name="PurchaseDate" value="@Model.PurchaseDate.ToString("yyyy-MM-dd")">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="Breed">Breed</label>
+                            <input type="text" class="form-control" id="Breed" value="@Model.Breed" name="Breed" placeholder="Enter cow breed">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="Weight">Weight (kg)</label>
+                            <input type="number" step="0.1" class="form-control" id="Weight" value="@Model.Weight" name="Weight" placeholder="Enter weight">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="Price">Price</label>
+                            <input type="number" step="0.01" class="form-control" id="Price" value="@Model.Price" name="Price" placeholder="Enter price">
+                        </div>
+
+
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary px-5">Submit</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

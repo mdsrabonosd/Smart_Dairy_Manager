@@ -16,6 +16,13 @@ namespace Smart_Dairy_Manager.Controllers
         {
             return View();
         }
+        public IActionResult List()
+        {
+
+            var datalist = _dbconnection.vaccines.ToList();
+
+            return View(datalist);
+        }
 
         [HttpGet]
         public IActionResult VaccineCreate()

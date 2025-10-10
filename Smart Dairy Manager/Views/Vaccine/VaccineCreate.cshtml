@@ -3,9 +3,18 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<div class="container-fluid"
+     style="background-image: url('https://img.freepik.com/premium-photo/young-serious-veterinarian-whitecoat-rubber-gloves-preparing-syringe-with-vaccine-dairy-cows_274679-6298.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;">
 
-<div class="container">
-    <div class="row">
+    <div class="row w-100">
         <div class="justify-content-center col-md-6">
 
             @if (TempData["ErroMsg"] != null)
@@ -17,16 +26,14 @@
                 </div>
             }
 
-
-
             <!-- general form elements -->
-            <div class="card card-primary ">
+            <div class="card card-primary" style="background-color: rgba(255, 255, 255, 0.9); border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.3);">
                 <div class="card-header">
                     <h3 class="card-title">Vaccine Create</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form asp-action="VaccineCreate" asp-controller="Vaccine" type="POST">
+                <form asp-action="VaccineCreate" asp-controller="Vaccine" method="post">
                     <div class="card-body">
                         <div class="form-group">
                             <label for="VaccineName">Vaccine name</label>
@@ -50,13 +57,10 @@
                             <label for="VaccineNotes">VaccineNotes</label>
                             <input type="text" class="form-control" id="VaccineNotes" value="@Model.VaccineNotes" name="VaccineNotes" placeholder="">
                         </div>
-
-
-
                     </div>
                     <!-- /.card-body -->
 
-                    <div class="card-footer">
+                    <div class="card-footer text-center">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>

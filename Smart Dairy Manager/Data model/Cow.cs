@@ -7,8 +7,8 @@ namespace Smart_Dairy_Manager.Data_model
         [Key]
         public int CowId { get; set; }
         public string? Gender { get; set; }
-        public int AgeDay { get; set; }
-        public int AgeMonth { get; set; }
+        public DateTime DateOfBirth { get; set; }
+   
         public  string? Breed { get; set; }
         public double? Price { get; set; }
         public double Weight { get; set; }

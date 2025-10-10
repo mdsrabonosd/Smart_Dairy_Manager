@@ -1,0 +1,68 @@
+﻿
+@model Smart_Dairy_Manager.Data_model.FeedManagement
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@if (TempData["srabonmsg"] != null)
+{
+        <div class="alert alert-warning alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+        @TempData["srabonmsg"]
+        </div>
+}
+
+
+<div class="container-fluid"
+     style="background-image: url('/image/4396574.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;">
+
+    <div class="row w-100">
+        <div class="col-md-8 offset-md-2">
+
+            <div class="card" style="background-color: rgba(255, 255, 255, 0.9); border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.3);">
+                <div class="card-body p-4">
+
+                    <h3 class="text-center mb-4">Add New Cow Information</h3>
+
+                    <form asp-action="FoodCreate" asp-controller="FeedManagement" method="post">
+
+                        <div class="form-group mb-3">
+                            <label for="FoodType">Food Type</label>
+                            <input type="text" class="form-control" id="FoodType" name="FoodType" placeholder="Enter food type (e.g. Grass, Feed, etc.)">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="FeedingTime">Feeding Time</label>
+                            <input type="datetime-local" class="form-control" id="FeedingTime" name="FeedingTime" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="Quantity">Quantity (kg)</label>
+                            <input type="number" step="0.1" class="form-control" id="Quantity" name="Quantity" placeholder="Enter quantity">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="FoodReports">Food Report</label>
+                            <textarea class="form-control" id="FoodReports" name="FoodReports" rows="3" placeholder="Enter food report or notes"></textarea>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary px-5">Submit</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
