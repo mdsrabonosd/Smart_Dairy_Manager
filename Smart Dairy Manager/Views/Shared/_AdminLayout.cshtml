@@ -83,7 +83,7 @@
                                 <img src="~/Admin/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
-                                        John Pierce
+                                        John 
                                         <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
                                     </h3>
                                     <p class="text-sm">I got your message bro</p>
@@ -168,7 +168,7 @@
                         <img src="~/Admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="/Identity/Account/Manage" class="d-block"> @User.Identity?.Name!</a>
+                        <a href="/Identity/Account/Manage" class="d-block">Srabon</a>
 
                     </div>
                 </div>
@@ -194,42 +194,105 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    Dashboard 1
+                                    Vaccine
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="~/Admin/index.html" class="nav-link">
+                                    <a asp-action="VaccineCreate" asp-controller="Vaccine" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v1</p>
+                                        <p>Vaccine Create</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a Asp-controller="Vaccine"  asp-action="VaccineList" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Vaccine List</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Cow
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a asp-action="Create" asp-controller="CowManagement" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Cow Create</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="~/Admin/index2.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v2</p>
+                                        <p>CowList</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="~/Admin/index3.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v3</p>
-                                    </a>
-                                </li>
+
 
                             </ul>
                         <li class="nav-item">
-                            <a href="~/Admin/index3.html" class="nav-link">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>Dashboard 2</p>
+                                <p>
+                                    Feed Management
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
                             </a>
-                        </li>
-                       
-                      
-                        
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a asp-action="FoodCreate" asp-controller="FeedManagement" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Food Create</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="~/Admin/index2.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Food List</p>
+                                    </a>
+                                </li>
 
-                        
+
+                            </ul>
+                        <li class="nav-item">
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Meat
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a asp-action="MeatCreate" asp-controller="Meat" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Meat Create</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="~/Admin/index2.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Meat List</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        <li class="nav-item">
+
+
+
+
 
                     </ul>
                 </nav>
@@ -242,12 +305,11 @@
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <!-- Main content -->
-            
-                <main role="main">
-                    @RenderBody()
-                </main>
-                <!-- /.error-page -->
-       
+
+            <main role="main">
+                @RenderBody()
+            </main>
+            <!-- /.error-page -->
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->

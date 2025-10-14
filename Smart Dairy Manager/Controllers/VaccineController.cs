@@ -16,10 +16,10 @@ namespace Smart_Dairy_Manager.Controllers
         {
             return View();
         }
-        public IActionResult List()
+        public IActionResult VaccineList()
         {
 
-            var datalist = _dbconnection.vaccines.ToList();
+            var datalist = _dbconnection.vaccines.Where(x=> x.VaccineId!=1 && x.VaccinePrice>3||x.VaccinePrice<100).ToList();
 
             return View(datalist);
         }

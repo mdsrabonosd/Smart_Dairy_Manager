@@ -20,6 +20,8 @@ namespace Smart_Dairy_Manager.Controllers
         public IActionResult Create()
         {
             var obj = new Cow();
+
+
             return View(obj);
         }
 
