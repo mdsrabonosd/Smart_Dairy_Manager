@@ -16,6 +16,11 @@ namespace Smart_Dairy_Manager.Controllers
         {
             return View();
         }
+        public IActionResult FoodList()
+        {
+            var datalist = _Connecton.FeedManagements.ToList();
+            return View(datalist);
+        }
 
         [HttpGet]
         public IActionResult FoodCreate()

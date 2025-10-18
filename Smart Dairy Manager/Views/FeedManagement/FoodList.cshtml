@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Smart_Dairy_Manager.Data_model.FeedManagement>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4 text-center">Food List</h2>
+
+
+            <div class="table-responsive">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead class="thead-dark">
+                        <tr class="text-center">
+                          
+                            <th scope="col">Food Type</th>
+                            <th scope="col">Feeding Time</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Food Report</th>
+                            <th scope="col">Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr class="text-center align-middle">
+
+                                <th>@item.FoodType</th>
+                                <td>@item.FeedingTime</td>
+                                <td>@item.Quantity</td>
+                                <td>@item.FoodReports</td>
+                                
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.CowId" class="btn btn-sm btn-warning me-1">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@item.CowId" class="btn btn-sm btn-danger">
+                                        <i class="fas fa-trash-alt"></i> Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -16,6 +16,10 @@ namespace Smart_Dairy_Manager.Controllers
         {
             return View();
         }
+        public IActionResult MeatProductionList()
+        {
+            return View();
+        }
         [HttpGet]
         public IActionResult MeatCreate()
         {
