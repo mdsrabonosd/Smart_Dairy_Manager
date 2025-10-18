@@ -42,16 +42,19 @@
                                 <tr class="text-center align-middle">
                                     <th>@item.VaccineId</th>
                                     <td>@item.VaccineName</td>
-                                    <td>@(item.VaccinePrice.HasValue ? "$" + item.VaccinePrice : "-")</td>
+                                    <td>@item.VaccinePrice</td>
                                     <td>@item.VaccineAgeMonth</td>
                                     <td>@item.VaccineAgeDay</td>
-                                    <td>@item.VaccineNotes ?? "-"</td>
+                                    <td>@item.VaccineNotes</td>
                                     <td>
                                         <a asp-action="Edit" asp-route-id="@item.VaccineId" class="btn btn-sm btn-warning me-1">
                                             <i class="fas fa-edit"></i> Edit
                                         </a>
                                         <a asp-action="Delete" asp-route-id="@item.VaccineId" class="btn btn-sm btn-danger">
                                             <i class="fas fa-trash-alt"></i> Delete
+                                        </a>
+                                        <a asp-action="Details" asp-route-id="@item.VaccineId" class=" btn btn-sm btn-success">
+                                            <i class=""></i> Details
                                         </a>
                                     </td>
                                 </tr>

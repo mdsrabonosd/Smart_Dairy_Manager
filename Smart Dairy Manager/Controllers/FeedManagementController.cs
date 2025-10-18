@@ -16,6 +16,16 @@ namespace Smart_Dairy_Manager.Controllers
         {
             return View();
         }
+        public IActionResult Delete(int id)
+        {
+            var data = _Connecton.FeedManagements.FirstOrDefault(x => x.FeedMGId ==id);
+
+            _Connecton.FeedManagements.Remove(data);
+
+            _Connecton.SaveChanges();
+
+            return RedirectToAction("FoodList");
+        }
         public IActionResult FoodList()
         {
             var datalist = _Connecton.FeedManagements.ToList();

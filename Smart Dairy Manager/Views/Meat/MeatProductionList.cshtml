@@ -1,3 +1,33 @@
-﻿@{
+﻿@model IEnumerable<Smart_Dairy_Manager.Data_model.MeatProduction>
+@{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date</th>
+            <th scope="col">Meat Weight (kg)</th>
+            <th scope="col">Action</th>
+
+          
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var data in Model){
+            <tr>
+                <td>@data.MeatProductionId </td>
+                <td>@data.Date </td>
+                <td> @data.CowWeight</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@data.MeatProductionId" class="btn btn-sm btn-warning me-1">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@data.MeatProductionId" class="btn btn-sm btn-danger">
+                        <i class="fas fa-trash-alt"></i> Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

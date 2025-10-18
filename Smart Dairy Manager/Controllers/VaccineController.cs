@@ -16,6 +16,23 @@ namespace Smart_Dairy_Manager.Controllers
         {
             return View();
         }
+        public IActionResult Details(int id)
+        {
+            var data = _dbconnection.vaccines.FirstOrDefault(x => x.VaccineId == id);
+           
+            return View(data);
+        }
+        public IActionResult Delete(int id)
+        {
+            var data = _dbconnection.vaccines.FirstOrDefault(x=>x.VaccineId==id);
+
+            //var data2 = _dbconnection.vaccines.Where(x => x.VaccineId == id);
+
+            _dbconnection.vaccines.Remove(data);
+            _dbconnection.SaveChanges();
+
+            return RedirectToAction("VaccineList");
+        }
         public IActionResult VaccineList()
         {
 
@@ -43,6 +60,10 @@ namespace Smart_Dairy_Manager.Controllers
 
             var data = _dbconnection.vaccines.Add(Object);
             _dbconnection.SaveChanges();
+
+            Object = new Vaccine();
+
+
             return View(Object);
 
 

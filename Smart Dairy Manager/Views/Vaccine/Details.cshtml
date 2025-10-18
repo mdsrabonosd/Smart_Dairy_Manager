@@ -1,0 +1,42 @@
+﻿@model Smart_Dairy_Manager.Data_model.Vaccine
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col"> Vaccine Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Vaccine Age (Month)</th>
+            <th scope="col">Vaccine Age (Day)</th>
+            <th scope="col">Notes</th>
+            <th scope="col">Actions</th>
+        </tr>
+       					
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            
+        </tr>
+       
+       
+    </tbody>
+</table>
+<table class="table">
+    <tbody>
+        <tr>
+            <th>Vaccine Name</th>
+            <td>@Model.VaccineName</td>
+        </tr>
+        <tr>
+            <th>Vaccine Price</th>
+            <td>@Model.VaccinePrice</td>
+        </tr>
+       
+       
+    </tbody>
+</table>

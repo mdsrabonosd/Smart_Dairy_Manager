@@ -16,9 +16,19 @@ namespace Smart_Dairy_Manager.Controllers
         {
             return View();
         }
+        public IActionResult Delete(int id)
+        {
+            var data = _dbconnection.MeatProductions.FirstOrDefault(x => x.MeatProductionId == id);
+            _dbconnection.MeatProductions.Remove(data);
+            _dbconnection.SaveChanges();
+
+            return RedirectToAction("MeatProductionList");
+        }
         public IActionResult MeatProductionList()
         {
-            return View();
+            var datalist = _dbconnection.MeatProductions.ToList();
+
+            return View(datalist);
         }
         [HttpGet]
         public IActionResult MeatCreate()

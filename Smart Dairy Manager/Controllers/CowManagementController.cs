@@ -16,6 +16,13 @@ namespace Smart_Dairy_Manager.Controllers
         {
             return View();
         }
+        public IActionResult Delete(int ID)
+        {
+            var data = _Dbcontext.Cows.FirstOrDefault(x=>x.CowId==ID);
+            _Dbcontext.Cows.Remove(data);
+            _Dbcontext.SaveChanges();
+            return RedirectToAction("CowList");
+        }
         public IActionResult CowList()
         {
             var datalist = _Dbcontext.Cows.ToList();

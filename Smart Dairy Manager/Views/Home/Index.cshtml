@@ -2,7 +2,91 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Smart Dairy Manager</title>
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-image: url(https://media.gettyimages.com/id/2149586419/video/feeding-cows-in-a-barn-close-up-stock-video.jpg?s=640x640&k=20&c=v8y06QmCZmKOutBmcirJ-oluIBE-whUvjlZEcBAT1HA=); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.5); /* transparent dark layer */
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: clamp(36px, 6vw, 80px); /* responsive size */
+            color: #fff;
+            text-shadow: 0 0 20px #00ffff, 0 0 40px #00cccc;
+            animation: glow 2.5s ease-in-out infinite alternate;
+            margin: 0 0 20px 0;
+            line-height: 1.05;
+        }
+
+    
+        @@keyframes glow {
+            from {
+                text-shadow: 0 0 10px #00e6e6, 0 0 20px #00e6e6, 0 0 30px #00b3b3;
+                transform: translateY(0);
+            }
+            to {
+                text-shadow: 0 0 30px #00ffff, 0 0 60px #00cccc, 0 0 90px #009999;
+                transform: translateY(-6px);
+            }
+        }
+
+        p {
+            font-size: clamp(16px, 2.2vw, 22px);
+            color: #fff;
+            margin: 0;
+        }
+
+        a {
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            color: #ffcc00;
+            text-decoration: underline;
+        }
+
+        /* small responsive tweaks */
+        .media (max-width: 600px) {
+            .overlay { padding: 40px 18px; }
+            p { font-size: 15px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay">
+        <h1>Welcome to Smart Dairy Manager</h1>
+        
+    </div>
+</body>
+</html>
