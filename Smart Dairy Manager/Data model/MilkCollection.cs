@@ -9,7 +9,7 @@ namespace Smart_Dairy_Manager.Data_model
         public int CowId { get; set; }
         public DateTime Date { get; set; }
 
-        public double MorningYield { get; set; }// 0.5 kg/litter milk
+        public int MorningYield { get; set; }
         public double EveningYield { get; set; }
         public double TotalYield { get; set; }
 
