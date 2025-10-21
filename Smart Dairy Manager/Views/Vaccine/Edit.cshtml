@@ -1,0 +1,76 @@
+﻿@model Smart_Dairy_Manager.Data_model.Vaccine
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid"
+     style="background-image: url('https://img.freepik.com/premium-photo/young-serious-veterinarian-whitecoat-rubber-gloves-preparing-syringe-with-vaccine-dairy-cows_274679-6298.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;">
+
+    <div class="row w-100">
+        <div class="justify-content-center col-md-6">
+
+            @if (TempData["ErroMsg"] != null)
+            {
+                <div class="alert alert-warning alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                    @TempData["ErroMsg"]
+                </div>
+            }
+
+            <!-- general form elements -->
+            <div class="card card-primary" style="background-color: rgba(255, 255, 255, 0.9); border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.3);">
+                <div class="card-header">
+                    <h3 class="card-title">Vaccine Create</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form asp-action="Edit" asp-controller="Vaccine" method="post">
+                    <div class="card-body">
+                        
+                        <input type="hidden" asp-for="@Model.VaccineId" /> 
+                        @* Update the data based on database ID serial. So this is mandatory *@
+
+                        <div class="form-group">
+                            <label for="VaccineName">Vaccine name</label>
+                            <input type="text" class="form-control" id="VaccineName" value="@Model.VaccineName" name="VaccineName" placeholder="Enter Vaccine Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="VaccinePrice">Price</label>
+                            <input type="text" class="form-control" id="VaccinePrice" value="@Model.VaccinePrice" name="VaccinePrice" placeholder="Price">
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="VaccineAgeMonth">Vaccine Age Month</label>
+                                <input type="number" class="form-control" id="VaccineAgeMonth" value="@Model.VaccineAgeMonth" name="VaccineAgeMonth" placeholder=" ">
+                            </div>
+                            <div class="form-group  col-md-6">
+                                <label for="VaccineAgeDay">Vaccine Age Day</label>
+                                <input type="number" class="form-control" id="VaccineAgeDay" value="@Model.VaccineAgeDay" name="VaccineAgeDay" placeholder=" ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="VaccineNotes">VaccineNotes</label>
+                            <input type="text" class="form-control" id="VaccineNotes" value="@Model.VaccineNotes" name="VaccineNotes" placeholder="">
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card -->
+
+        </div>
+    </div>
+</div>
