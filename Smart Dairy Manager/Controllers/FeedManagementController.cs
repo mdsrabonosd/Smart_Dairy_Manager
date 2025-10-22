@@ -58,7 +58,7 @@ namespace Smart_Dairy_Manager.Controllers
   
         public IActionResult Delete(int id)
         {
-            var data = _Connecton.FeedManagements.FirstOrDefault(x => x.FeedMGId == id); ;222222222222222@@
+            var data = _Connecton.FeedManagements.FirstOrDefault(x => x.FeedMGId == id); 
 
             _Connecton.FeedManagements.Remove(data);
 
