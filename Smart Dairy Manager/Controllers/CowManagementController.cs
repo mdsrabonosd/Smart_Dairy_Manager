@@ -16,30 +16,6 @@ namespace Smart_Dairy_Manager.Controllers
         {
             return View();
         }
-        public IActionResult Delete(int ID)
-        {
-            var data = _Dbcontext.Cows.FirstOrDefault(x=>x.CowId==ID);
-            _Dbcontext.Cows.Remove(data);
-            _Dbcontext.SaveChanges();
-            return RedirectToAction("CowList");
-        }
-        public IActionResult CowList()
-        {
-            var datalist = _Dbcontext.Cows.ToList();
-            return View(datalist);
-        }
-
-
-        //public IActionResult VaccineList()
-        //{
-
-        //    var datalist = _dbconnection.vaccines.Where(x => x.VaccineId != 1 && x.VaccinePrice > 3 || x.VaccinePrice < 100).ToList();
-
-        //    return View(datalist);
-        //}
-
-
-
 
         [HttpGet]
         public IActionResult Create()
@@ -55,18 +31,58 @@ namespace Smart_Dairy_Manager.Controllers
 
         public IActionResult Create(Cow Object)
         {
-            if (Object.Price <= 0 || Object.Weight< 0 )
+            if (Object.Price <= 0 || Object.Weight < 0)
             {
                 TempData["srabonmsg"] = "Give Input Properly";
                 return View(Object);
             }
 
             var data = _Dbcontext.Cows.Add(Object);
-           _Dbcontext.SaveChanges();
+            _Dbcontext.SaveChanges();
             Object = new Cow();
 
             return View(Object);
         }
+
+
+        public IActionResult CowList()
+        {
+            var datalist = _Dbcontext.Cows.ToList();
+            return View(datalist);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var data = _Dbcontext.Cows.FirstOrDefault(x => x.CowId == id);
+
+            return View(data);
+        }
+        [HttpPost]
+        public IActionResult Edit(Cow data)
+        {
+
+            _Dbcontext.Cows.Update(data);
+            _Dbcontext.SaveChanges();
+
+            return RedirectToAction("CowList");
+        }
+
+        public IActionResult Delete(int ID)
+        {
+            var data = _Dbcontext.Cows.FirstOrDefault(x=>x.CowId==ID);
+            _Dbcontext.Cows.Remove(data);
+            _Dbcontext.SaveChanges();
+            return RedirectToAction("CowList");
+        }
+
+        public IActionResult Details(int id)
+        {
+            var data = _Dbcontext.Cows.FirstOrDefault(x => x.CowId == id);
+
+            return View(data);
+        }
+
+
     }
 }
 

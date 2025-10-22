@@ -16,26 +16,11 @@ namespace Smart_Dairy_Manager.Controllers
         {
             return View();
         }
-        public IActionResult Delete(int id)
-        {
-            var data = _Connecton.FeedManagements.FirstOrDefault(x => x.FeedMGId ==id);
-
-            _Connecton.FeedManagements.Remove(data);
-
-            _Connecton.SaveChanges();
-
-            return RedirectToAction("FoodList");
-        }
-        public IActionResult FoodList()
-        {
-            var datalist = _Connecton.FeedManagements.ToList();
-            return View(datalist);
-        }
 
         [HttpGet]
         public IActionResult FoodCreate()
         {
-            // Create a fresh empty model when loading the form
+           // Create a fresh empty model when loading the form
             var obj = new FeedManagement();
             return View(obj);
         }
@@ -43,30 +28,44 @@ namespace Smart_Dairy_Manager.Controllers
         [HttpPost]
         public IActionResult FoodCreate(FeedManagement Srabon)
         {
-            // Validation check
+         
             if (Srabon.Quantity <= 0)
             {
                 TempData["showmassage"] = "Give the Quantity Properly";
-                return View(Srabon); // Keep old input values
+                return View(Srabon); 
             }
 
-            // Save valid data
+           
             _Connecton.FeedManagements.Add(Srabon);
             _Connecton.SaveChanges();
 
-            // Success message
             TempData["showmassage"] = "Feed data saved successfully!";
 
-            // Redirect to clear the form
+         
             return RedirectToAction(nameof(FoodCreate));
         }
+
+        public IActionResult FoodList()
+        {
+            var datalist = _Connecton.FeedManagements.ToList();
+            return View(datalist);
+        }
+        public IActionResult Edit(int id)
+        {
+            return View();
+
+        }
+  
+        public IActionResult Delete(int id)
+        {
+            var data = _Connecton.FeedManagements.FirstOrDefault(x => x.FeedMGId == id); ;222222222222222@@
+
+            _Connecton.FeedManagements.Remove(data);
+
+            _Connecton.SaveChanges();
+            
+            return RedirectToAction("FoodList");
+        }
+
     }
 }
-//ই কন্ট্রোলারে দুটি কাজ ঠিক করা হয়েছে:
-
-//ভুল ইনপুট(Quantity <= 0) দিলে
-//→ return View(Srabon); দেয়, তাই আগের ইনপুট ফর্মে থাকবে।
-
-//সঠিক ইনপুট দিলে
-//→ ডেটা সেভ হয়, তারপর RedirectToAction("FoodCreate") দিয়ে
-//ফর্ম একদম নতুনভাবে খুলে যায় (খালি ফর্ম)।

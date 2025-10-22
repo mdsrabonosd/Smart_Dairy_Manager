@@ -16,26 +16,13 @@ namespace Smart_Dairy_Manager.Controllers
         {
             return View();
         }
-        public IActionResult Delete(int id)
-        {
-            var data = _dbconnection.MeatProductions.FirstOrDefault(x => x.MeatProductionId == id);
-            _dbconnection.MeatProductions.Remove(data);
-            _dbconnection.SaveChanges();
 
-            return RedirectToAction("MeatProductionList");
-        }
-        public IActionResult MeatProductionList()
-        {
-            var datalist = _dbconnection.MeatProductions.ToList();
-
-            return View(datalist);
-        }
         [HttpGet]
         public IActionResult MeatCreate()
         {
-            
+
             return View();
-           
+
         }
         [HttpPost]
         public IActionResult MeatCreate(MeatProduction srabon)
@@ -47,8 +34,33 @@ namespace Smart_Dairy_Manager.Controllers
             }
             var data = _dbconnection.MeatProductions.Add(srabon);
             _dbconnection.SaveChanges();
-             return RedirectToAction(nameof(MeatCreate));
-            
+            return RedirectToAction(nameof(MeatCreate));
+
+        }
+        public IActionResult MeatProductionList()
+        {
+            var datalist = _dbconnection.MeatProductions.ToList();
+
+            return View(datalist);
+        }
+
+
+        public IActionResult Edit()
+        {
+            return View();
+        }
+        public IActionResult Delete(int id)
+        {
+            var data = _dbconnection.MeatProductions.FirstOrDefault(x => x.MeatProductionId == id);
+            _dbconnection.MeatProductions.Remove(data);
+            _dbconnection.SaveChanges();
+
+            return RedirectToAction("MeatProductionList");
+        }
+
+        public IActionResult Details()
+        {
+            return View();
         }
     }
 }

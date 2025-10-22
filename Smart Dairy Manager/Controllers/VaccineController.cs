@@ -51,6 +51,7 @@ namespace Smart_Dairy_Manager.Controllers
             var datalist = _dbconnection.vaccines.Where(x => x.VaccineId != 1 && x.VaccinePrice > 3 || x.VaccinePrice < 100).ToList();
 
             return View(datalist);
+          
         }
 
 
@@ -67,7 +68,7 @@ namespace Smart_Dairy_Manager.Controllers
             _dbconnection.vaccines.Update(data);
             _dbconnection.SaveChanges();
 
-            return View(data);
+            return RedirectToAction("VaccineList");
         }
 
         public IActionResult Delete(int id)

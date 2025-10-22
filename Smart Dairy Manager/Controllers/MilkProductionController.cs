@@ -28,5 +28,10 @@ namespace Smart_Dairy_Manager.Controllers
 
             return RedirectToAction("MilkCreate");
         }
+
+        public IActionResult MilkList()
+        {
+            return View();
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model Smart_Dairy_Manager.Data_model.Vaccine
+﻿@model Smart_Dairy_Manager.Data_model.Cow
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -44,33 +44,37 @@
     }
 </style>
 
-<div class="vaccine-table-container">
-    <h2>Vaccine Details</h2>
+<div class="cow-table-container">
+    <h2>Cow Details</h2>
     <table class="table">
         <tbody>
             <tr>
-                <th>Vaccine ID</th>
-                <td>@Model.VaccineId</td>
+                <th>Cow ID</th>
+                <td>@Model.CowId</td>
             </tr>
             <tr>
-                <th>Vaccine Name</th>
-                <td>@Model.VaccineName</td>
+                <th>Gender</th>
+                <td>@Model.Gender</td>
             </tr>
             <tr>
-                <th>Vaccine Price (Tk)</th>
-                <td>@Model.VaccinePrice</td>
+                <th>Date of Birth</th>
+                <td>@Model.DateOfBirth</td>
             </tr>
             <tr>
-                <th>Recommended Age (Months)</th>
-                <td>@Model.VaccineAgeMonth</td>
+                <th>Breed</th>
+                <td>@Model.Breed</td>
             </tr>
             <tr>
-                <th>Recommended Age (Days)</th>
-                <td>@Model.VaccineAgeDay</td>
+                <th>Price (Tk)</th>
+                <td>@Model.Price</td>
             </tr>
             <tr>
-                <th>Notes</th>
-                <td>@Model.VaccineNotes</td>
+                <th>Weight (Kg)</th>
+                <td>@Model.Weight</td>
+            </tr>
+            <tr>
+                <th>Purchase Date</th>
+                <td>@Model.PurchaseDate</td>
             </tr>
         </tbody>
     </table>
