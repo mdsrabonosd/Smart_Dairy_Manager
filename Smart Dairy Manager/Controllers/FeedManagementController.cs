@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Smart_Dairy_Manager.Data;
 using Smart_Dairy_Manager.Data_model;
 
@@ -50,12 +51,25 @@ namespace Smart_Dairy_Manager.Controllers
             var datalist = _Connecton.FeedManagements.ToList();
             return View(datalist);
         }
+
+
         public IActionResult Edit(int id)
         {
-            return View();
+            var data = _Connecton.FeedManagements.FirstOrDefault(x => x.FeedMGId == id);
 
+            return View(data);
         }
-  
+
+        [HttpPost]
+        public IActionResult Edit(FeedManagement data)
+        {
+
+            _Connecton.FeedManagements.Update(data);
+            _Connecton.SaveChanges();
+
+            return RedirectToAction("FoodList");
+        }
+
         public IActionResult Delete(int id)
         {
             var data = _Connecton.FeedManagements.FirstOrDefault(x => x.FeedMGId == id); 
@@ -65,6 +79,11 @@ namespace Smart_Dairy_Manager.Controllers
             _Connecton.SaveChanges();
             
             return RedirectToAction("FoodList");
+        }
+        public IActionResult Details(int id)
+        {
+            var srabon = _Connecton.FeedManagements.FirstOrDefault(x =>x.FeedMGId == id);
+            return View(srabon);
         }
 
     }

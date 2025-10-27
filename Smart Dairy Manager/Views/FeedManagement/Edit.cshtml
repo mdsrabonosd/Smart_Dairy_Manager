@@ -2,16 +2,6 @@
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-@if (TempData["showmassage"] != null)
-{
-    <div class="alert alert-warning alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
-        @TempData["showmassage"]
-    </div>
-}
-
 <div class="container-fluid"
      style="background-image: url('/image/4396574.jpg');
             background-size: cover;
@@ -30,7 +20,10 @@
 
                     <h3 class="text-center mb-4">Add New Food Information</h3>
 
-                    <form asp-action="FoodCreate" asp-controller="FeedManagement" method="post">
+                    <form asp-action="Edit" asp-controller="FeedManagement" method="post">
+
+                       
+                        <input type="hidden" asp-for="@Model.FeedMGId">
 
                         <!-- Food Type -->
                         <div class="form-group mb-3">
@@ -40,8 +33,8 @@
 
                         <!-- Feeding Time -->
                         <div class="form-group mb-3">
-                            <label asp-for="FeedingTime">Feeding Time</label> 
-                            <input type="date" asp-for="FeedingTime" class="form-control" />
+                            <label asp-for="FeedingTime">Feeding Time</label>
+                            <input asp-for="FeedingTime" class="form-control" type="datetime-local" />
                         </div>
 
                         <!-- Quantity -->
@@ -68,14 +61,3 @@
     </div>
 </div>
 
-
-@* বাংলা ব্যাখ্যা (View)
-
-শুধু asp-for ব্যবহার করেছি যেন ডেটা ঠিকমতো মডেলের সাথে বেঁধে যায়।
-এতে এখন যা হবে:
-
-Quantity ভুল দিলে → ইনপুট আগের মতো থাকবে
-
-Quantity ঠিক দিলে → ডেটা সেভ হবে এবং ফর্ম খালি হয়ে যাবে
-
-মেসেজ (TempData["showmassage"]) উপরে সুন্দরভাবে দেখাবে *@
