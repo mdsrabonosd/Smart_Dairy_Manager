@@ -45,10 +45,20 @@ namespace Smart_Dairy_Manager.Controllers
         }
 
 
-        public IActionResult Edit()
+        public IActionResult Edit(int id)
         {
-            return View();
+            var data= _dbconnection.MeatProductions.FirstOrDefault(x=>x.MeatProductionId==id);
+            return View(data);
         }
+
+        [HttpPost]
+        public IActionResult Edit(MeatProduction objectt)
+        {
+            _dbconnection.MeatProductions.Update(objectt);
+            _dbconnection.SaveChanges();
+            return RedirectToAction("MeatProductionList");
+        }
+
         public IActionResult Delete(int id)
         {
             var data = _dbconnection.MeatProductions.FirstOrDefault(x => x.MeatProductionId == id);
@@ -58,9 +68,10 @@ namespace Smart_Dairy_Manager.Controllers
             return RedirectToAction("MeatProductionList");
         }
 
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
-            return View();
+            var data = _dbconnection.MeatProductions.FirstOrDefault(x=>x.MeatProductionId==id);
+            return View(data);
         }
     }
 }

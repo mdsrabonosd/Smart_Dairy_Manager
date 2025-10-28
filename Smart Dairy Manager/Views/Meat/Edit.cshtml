@@ -1,0 +1,65 @@
+﻿@model Smart_Dairy_Manager.Data_model.MeatProduction
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@if (TempData["srabonmsge"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Hey!</strong> Give input properly
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        @TempData["srabonmassage"];
+    </div>
+}
+
+<div class="container-fluid"
+     style="background-image: url('https://www.meatemporium.com.au/cdn/shop/files/4044_AustralianMeatEmporium__L1A0185_460x@2x.jpg?v=1741661901');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;">
+
+    <div class="row w-100">
+        <div class="col-md-6 offset-md-3">
+
+            <div class="card" style="background-color: rgba(255, 255, 255, 0.9); border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.3);">
+                <div class="card-body p-4">
+
+                    <h3 class="text-center mb-4">Add Meat Entry</h3>
+
+                    <input type="hidden" asp-for="@Model.MeatProductionId">
+
+                    <form asp-action="Edit" asp-controller="Meat" method="post">
+                        <div class="form-group mb-3">
+                            <label for="CowId">CowID</label>
+                            <input asp-for="CowId" input type="text" step="0.01" class="form-control" id="CowId" name="CowId" placeholder="Enter Cow ID" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="Date">Date</label>
+                            <input asp-for="Date" type="date" class="form-control" id="Date" name="Date">
+                        </div>
+
+
+
+                        <div class="form-group mb-3">
+                            <label for="CowWeight">Meat Weight (kg)</label>
+                            <input asp-for="CowWeight" input type="text" step="0.01" class="form-control" id="CowWeight" name="CowWeight" placeholder="Enter meat weight" required>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary px-5">Update</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
