@@ -70,21 +70,39 @@ namespace Smart_Dairy_Manager.Controllers
             return RedirectToAction("FoodList");
         }
 
+        //public IActionResult Delete(int id)
+        //{
+        //    var data = _Connecton.FeedManagements.FirstOrDefault(x => x.FeedMGId == id); 
+
+        //    _Connecton.FeedManagements.Remove(data);
+
+        //    _Connecton.SaveChanges();
+
+        //    return RedirectToAction("FoodList");
+        //}
+
+        [HttpPost]
         public IActionResult Delete(int id)
         {
-            var data = _Connecton.FeedManagements.FirstOrDefault(x => x.FeedMGId == id); 
+            if (id == 0)
+            {
+                return Json("not valid");
+            }
 
-            _Connecton.FeedManagements.Remove(data);
+            var chackdata = _Connecton.FeedManagements
+                .Where(x => x.FeedMGId == id)
+                .FirstOrDefault();
 
-            _Connecton.SaveChanges();
-            
-            return RedirectToAction("FoodList");
+            if (chackdata != null)
+            {
+                _Connecton.Remove(chackdata);
+                _Connecton.SaveChanges();
+                return Ok();    // your original return
+            }
+
+            return Json("not found");   // <-- this missing return fixed
         }
-        public IActionResult Details(int id)
-        {
-            var srabon = _Connecton.FeedManagements.FirstOrDefault(x =>x.FeedMGId == id);
-            return View(srabon);
-        }
+
 
     }
 }
