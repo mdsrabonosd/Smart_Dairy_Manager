@@ -71,16 +71,32 @@ namespace Smart_Dairy_Manager.Controllers
             return RedirectToAction("VaccineList");
         }
 
-        public IActionResult Delete(int id)
+        //public IActionResult Delete(int id)
+        //{
+        //    var data = _dbconnection.vaccines.FirstOrDefault(x => x.VaccineId == id);
+
+        //    _dbconnection.vaccines.Remove(data);
+        //    _dbconnection.SaveChanges();
+
+        //    return RedirectToAction("VaccineList");
+        //}
+
+        public IActionResult delete(int id)
         {
-            var data = _dbconnection.vaccines.FirstOrDefault(x => x.VaccineId == id);
+            if (id == 0)
+            {
+                return Json("vaccine not valid");
+            }
+            var chack_data = _dbconnection.vaccines.Where(x => x.VaccineId == id).FirstOrDefault();
 
-            _dbconnection.vaccines.Remove(data);
-            _dbconnection.SaveChanges();
-
-            return RedirectToAction("VaccineList");
+            if (chack_data != null)
+            {
+                _dbconnection.Remove(chack_data);
+                _dbconnection.SaveChanges();
+                return Ok();
+            }
+            return BadRequest();
         }
-
 
         public IActionResult Details(int id)
         {
