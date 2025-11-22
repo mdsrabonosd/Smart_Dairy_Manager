@@ -41,7 +41,7 @@ namespace Smart_Dairy_Manager.Controllers
             _Dbcontext.SaveChanges();
             Object = new Cow();
 
-            return View(Object);
+            return RedirectToAction("CowList");
         }
 
 
@@ -67,12 +67,21 @@ namespace Smart_Dairy_Manager.Controllers
             return RedirectToAction("CowList");
         }
 
+        [HttpPost]
         public IActionResult Delete(int ID)
         {
+            if (ID <= 0)
+            {
+                return Json("id not valid");
+            }
             var data = _Dbcontext.Cows.FirstOrDefault(x=>x.CowId==ID);
-            _Dbcontext.Cows.Remove(data);
-            _Dbcontext.SaveChanges();
-            return RedirectToAction("CowList");
+            if (data != null)
+            {
+                _Dbcontext.Cows.Remove(data);
+                _Dbcontext.SaveChanges();
+                return Json("ok");
+            }
+            return BadRequest();
         }
 
         public IActionResult Details(int id)

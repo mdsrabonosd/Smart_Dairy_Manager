@@ -10,7 +10,7 @@ namespace Smart_Dairy_Manager.Data_model
         public DateTime DateOfBirth { get; set; }
    
         public  string? Breed { get; set; }
-        public double? Price { get; set; } = 100;
+        public double? Price { get; set; } 
         public double Weight { get; set; }
         public DateTime PurchaseDate { get; set; } = DateTime.Now;
     }
