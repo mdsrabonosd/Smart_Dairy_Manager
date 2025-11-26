@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Smart_Dairy_Manager.Data;
 using Smart_Dairy_Manager.Data_model;
+using Smart_Dairy_Manager.ViewModel;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Smart_Dairy_Manager.Controllers
@@ -32,8 +33,11 @@ namespace Smart_Dairy_Manager.Controllers
                 TempData["srabonmsge"] = "Give input properly";
                 return View(srabon);
             }
+
             var data = _dbconnection.MeatProductions.Add(srabon);
+
             _dbconnection.SaveChanges();
+
             return RedirectToAction(nameof(MeatCreate));
 
         }

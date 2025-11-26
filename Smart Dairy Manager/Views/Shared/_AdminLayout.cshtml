@@ -22,7 +22,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="~/Admin/index3.html" class="nav-link">Home</a>
+                    <a asp-action="Index" asp-controller="Home" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
@@ -314,10 +314,12 @@
                             </ul>
                         <li class="nav-item">
                         <li class="nav-item">
-                            <a href="#" class="nav-link btn btn-primary text-left" style="width: 100%; color: #fff;">
-                                <i class="fas fa-file-alt"></i>
-                                <span style="margin-left: 8px;">Report</span>
-                            </a>
+                            <form asp-action="dairyreport" asp-controller="Report" method="get" style="width:100%;">
+                                <button type="submit" class="btn btn-primary w-100 text-left" style="color:#fff;">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span style="margin-left: 8px;">Report</span>
+                                </button>
+                            </form>
                         </li>
 
                     </ul>

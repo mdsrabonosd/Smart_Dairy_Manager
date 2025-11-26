@@ -1,3 +1,43 @@
 ﻿@{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
+@model Smart_Dairy_Manager.ViewModel.ReportVM
+
+<h1> Milk = @Model.TotalMilk </h1>
+<h1> Food = @Model.TotalFood </h1>
+<h1> Cost = @Model.VaccineCost </h1>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>Otto</td>
+          
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>Thornton</td>
+           
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>the Bird</td>
+            
+        </tr>
+    </tbody>
+</table>

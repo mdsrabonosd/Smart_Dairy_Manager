@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Smart_Dairy_Manager.ViewModel;
 
 namespace Smart_Dairy_Manager.Controllers
 {
@@ -10,7 +11,17 @@ namespace Smart_Dairy_Manager.Controllers
         } 
         public IActionResult dairyreport()
         {
-            return View();
+
+
+            var reportVM = new ReportVM();
+
+            //reportVM.TotalMilk = 125;
+
+            //reportVM.TotalFood = 500;
+
+            //reportVM.VaccineCost = 1000;
+
+            return View(reportVM);
         }
     }
 }
