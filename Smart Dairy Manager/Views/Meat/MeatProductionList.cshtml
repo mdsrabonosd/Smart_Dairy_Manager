@@ -1,8 +1,9 @@
-﻿@model IEnumerable<Smart_Dairy_Manager.Data_model.MeatProduction>
+﻿@using Smart_Dairy_Manager.ViewModel
+@model IEnumerable<MeatProductionVM>
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<table class="table">
+<table class="table" id="datatable">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -34,3 +35,18 @@
         }
     </tbody>
 </table>
+
+@section Scripts{
+    <script>
+        $(document).ready(
+            function(){
+        $("#datatable").DataTable({
+             "responsive": true, 
+             dom:'Bfrtip',
+
+             "buttons": [ 'excel', 'pdf','print']
+           }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            }
+        );
+    </script>
+}

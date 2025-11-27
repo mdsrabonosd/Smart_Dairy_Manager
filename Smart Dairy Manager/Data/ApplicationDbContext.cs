@@ -16,5 +16,6 @@ namespace Smart_Dairy_Manager.Data
         public DbSet<Vaccine> vaccines { get; set; } = default!;
         public DbSet<VaccineApply> VaccineApplies { get; set; } = default!;
         public DbSet<MilkCollection> MilkCollections { get; set; } = default!;
+        public IEnumerable<object> ReportItems { get; internal set; }
     }
 }

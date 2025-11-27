@@ -5,5 +5,6 @@
         public double TotalMilk { get; set; }
         public double TotalFood { get; set; }
         public double VaccineCost { get; set; }
+        public double Vaccine { get; set; }
     }
 }

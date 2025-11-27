@@ -43,7 +43,15 @@ namespace Smart_Dairy_Manager.Controllers
         }
         public IActionResult MeatProductionList()
         {
-            var datalist = _dbconnection.MeatProductions.ToList();
+            var datalist = _dbconnection.MeatProductions.Select(x => new MeatProductionVM
+            {
+                MeatProductionId = x.MeatProductionId,
+                CowId = x.CowId,    
+                Date = DateTime.Now,    
+                CowWeight = x.CowWeight
+
+            })
+            .ToList();
 
             return View(datalist);
         }

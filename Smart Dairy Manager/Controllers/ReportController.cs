@@ -1,27 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Smart_Dairy_Manager.ViewModel;
-
-namespace Smart_Dairy_Manager.Controllers
+﻿// Controllers/ReportController.cs
+using Microsoft.AspNetCore.Mvc;
+using Smart_Dairy_Manager.Data;   
+public class ReportController : Controller
 {
-    public class ReportController : Controller
+    private readonly ApplicationDbContext _context;
+
+    public ReportController(ApplicationDbContext context)
     {
-        public IActionResult Index()
-        {
-            return View();
-        } 
-        public IActionResult dairyreport()
-        {
-
-
-            var reportVM = new ReportVM();
-
-            //reportVM.TotalMilk = 125;
-
-            //reportVM.TotalFood = 500;
-
-            //reportVM.VaccineCost = 1000;
-
-            return View(reportVM);
-        }
+        _context = context;
     }
+
+    // Return the view
+    public IActionResult Index()
+    {
+        return View();
+    }
+    
 }

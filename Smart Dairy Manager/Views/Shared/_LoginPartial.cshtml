@@ -8,19 +8,98 @@
     <li class="nav-item">
         <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
     </li>
-    <li class="nav-item">
-        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>
+        <style>
+            .logout-btn {
+                padding: 8px 22px;
+                border-radius: 50px;
+                font-weight: 600;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                background: linear-gradient(135deg, #ff512f, #dd2476);
+                color: white !important;
+                transition: all 0.35s ease;
+                box-shadow: 0 4px 12px rgba(221, 36, 118, 0.4);
+                letter-spacing: 0.5px;
+            }
+
+                .logout-btn:hover {
+                    background: linear-gradient(135deg, #dd2476, #ff512f);
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 16px rgba(221, 36, 118, 0.55);
+                }
+
+                .logout-btn:active {
+                    transform: scale(0.96);
+                }
+        </style>
+
+        <li class="nav-item">
+            <form class="form-inline"
+                  asp-area="Identity"
+                  asp-page="/Account/Logout"
+                  asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+
+                <button type="submit" class="logout-btn mx-2">
+                    Logout
+                </button>
+            </form>
+        </li>
+
 }
-else
-{
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
+else{
+        <style>
+            .nav-btn {
+                padding: 8px 18px;
+                border-radius: 30px;
+                font-weight: 600;
+                transition: 0.3s;
+                border: 2px solid transparent;
+            }
+
+            .btn-login {
+                background: linear-gradient(135deg, #00c6ff, #0072ff);
+                color: white !important;
+            }
+
+                .btn-login:hover {
+                    background: transparent;
+                    color: #0072ff !important;
+                    border-color: #0072ff;
+                }
+
+            .btn-register {
+                background: linear-gradient(135deg, #ff758c, #ff7eb3);
+                color: white !important;
+            }
+
+                .btn-register:hover {
+                    background: transparent;
+                    color: #ff4f79 !important;
+                    border-color: #ff4f79;
+                }
+
+            .btn-logout {
+                background: linear-gradient(135deg, #ff512f, #dd2476);
+                color: white !important;
+            }
+
+                .btn-logout:hover {
+                    background: transparent;
+                    color: #dd2476 !important;
+                    border-color: #dd2476;
+                }
+        </style>
+
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <li class="nav-item">
+                <a class="nav-btn btn-login mx-2" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-btn btn-register mx-2" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            </li>
+        }
 }
+
 </ul>
