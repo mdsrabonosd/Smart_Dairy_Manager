@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Smart_Dairy_Manager.Data_model.VaccineApply>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr class="text-center">
+
+                <th scope="col">#</th>
+                <th scope="col">CowId</th>
+                <th scope="col">ApplyAmmount</th>
+                <th scope="col">VaccineApplyMonth</th>
+                <th scope="col">VaccineApplyDay</th>
+                <th scope="col">VaccineApplyNote</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="text-center align-middle">
+                    <td>@item.VaccineApplyId</td>
+                    <td>@item.CowId</td>
+                    <td>@item.ApplyAmmount</td>
+                    <td>@item.VaccineApplyMonth</td>
+                    <td>@item.VaccineApplyDay</td>
+                    <td>@item.VaccineApplyNote</td>
+
+                    <td>
+                       
+                        <a asp-action="Edit" asp-route-id="" class="btn btn-sm btn-primary">
+                            <i class="fas fa-trash-alt"></i> Edit
+                        </a>
+                        <a asp-action="Delete" asp-route-id="" class="btn btn-sm btn-danger">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </a>
+                        <a asp-action="Details" asp-route-id="" class="btn btn-sm btn btn-success">
+                            <i class="fas fa-trash-alt"></i> Details
+                        </a>
+                    </td>
+
+
+                </tr>
+
+
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
