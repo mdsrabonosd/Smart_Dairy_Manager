@@ -1,1 +1,87 @@
-﻿Hello
+﻿@model Smart_Dairy_Manager.Data_model.VaccineApply
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@* 
+@if (TempData["srabonmsge"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Hey!</strong> Give input properly
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        @TempData["srabonmassage"];
+    </div>
+} *@
+
+<div class="container-fluid"
+     style="background-image: url(https://img.freepik.com/premium-photo/veterinarian-inspects-cows-farm_218872-2447.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;">
+
+    <div class="row w-100">
+        <div class="col-md-6 offset-md-3">
+
+            <div class="card" style="background-color: rgba(255, 255, 255, 0.9); border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.3);">
+                <div class="card-body p-4">
+
+                    <h3 class="text-center mb-4">Add Vaccine Apply Data</h3>
+
+
+
+                    <form asp-action="ApplyCreate" asp-controller="VaccineApply" method="post">
+
+                        <div class="form-group mb-3">
+                            <label for="VaccineId">Vaccine ID</label>
+                            <input asp-for="VaccineId" type="number" class="form-control" id="VaccineId" name="VaccineId" placeholder="Enter Vaccine ID">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="CowId">Cow ID</label>
+                            <input asp-for="CowId" type="number" class="form-control" id="CowId" name="CowId" placeholder="Enter Cow ID">
+                        </div>
+
+                        <!-- Apply Amount, Month, and Day in same row -->
+
+                        <div class="form-group mb-3 row">
+                            <div class="col-md-4">
+                                <label for="ApplyAmmount">Apply Amount</label>
+                                <input asp-for="ApplyAmmount" type="number" step="0.01" class="form-control" id="ApplyAmmount" name="ApplyAmmount" placeholder="Enter Amount">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="VaccineApplyMonth">Apply Month</label>
+                                <input asp-for="VaccineApplyMonth" type="number" class="form-control" id="VaccineApplyMonth" name="VaccineApplyMonth" placeholder="Month">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="VaccineApplyDay">Apply Day</label>
+                                <input asp-for="VaccineApplyDay" type="number" class="form-control" id="VaccineApplyDay" name="VaccineApplyDay" placeholder="Day">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="VaccineApplyNote">Note</label>
+                            <textarea asp-for="VaccineApplyNote" class="form-control" id="VaccineApplyNote" name="VaccineApplyNote" rows="3" placeholder="Write any notes..."></textarea>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary px-5">Submit</button>
+                        </div>
+
+                    </form>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
