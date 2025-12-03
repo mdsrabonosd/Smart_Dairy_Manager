@@ -1,20 +1,7 @@
 ﻿@model Smart_Dairy_Manager.Data_model.VaccineApply
-
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-@* 
-@if (TempData["srabonmsge"] != null)
-{
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Hey!</strong> Give input properly
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        @TempData["srabonmassage"];
-    </div>
-} *@
-
 <div class="container-fluid"
      style="background-image: url(https://img.freepik.com/premium-photo/veterinarian-inspects-cows-farm_218872-2447.jpg);
             background-size: cover;
@@ -34,9 +21,10 @@
 
                     <h3 class="text-center mb-4">Add Vaccine Apply Data</h3>
 
+                    <input type="hidden" asp-for="@Model.VaccineApplyId">
 
 
-                    <form asp-action="ApplyCreate" asp-controller="VaccineApply" method="post">
+                    <form asp-action="Edit" asp-controller="VaccineApply" method="post">
 
                         <div class="form-group mb-3">
                             <label for="VaccineId">Vaccine ID</label>
@@ -46,11 +34,6 @@
                         <div class="form-group mb-3">
                             <label for="CowId">Cow ID</label>
                             <input asp-for="CowId" type="number" class="form-control" id="CowId" name="CowId" placeholder="Enter Cow ID">
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="CowId">Apply Date</label>
-                            <input asp-for="Applydate" type="number" class="form-control" id="Applydate" name="Applydate" placeholder="Enter Cow ID">
                         </div>
 
 
@@ -77,7 +60,7 @@
                         </div>
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary px-5">Submit</button>
+                            <button type="submit" class="btn btn-primary px-5">Update</button>
                         </div>
 
                     </form>

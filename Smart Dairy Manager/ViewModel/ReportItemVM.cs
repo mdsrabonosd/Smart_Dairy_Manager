@@ -2,11 +2,10 @@
 {
     public class ReportItemVM
     {
-        public int Id { get; set; }
-        public string Item { get; set; }
-        public DateTime Date { get; set; }
-        public string Quantity { get; set; }
-        public decimal Total { get; set; }
+        public DateTime DateTime { get; set; }
+        public double VaccineCost { get; set; }
+        public double FoodAmmount { get; set; }
+        public double MilkCollection { get; set; }
 
     }
 }

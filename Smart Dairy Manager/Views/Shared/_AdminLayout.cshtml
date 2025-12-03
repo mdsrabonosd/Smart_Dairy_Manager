@@ -197,6 +197,30 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
+                                    Cow
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a asp-action="Create" asp-controller="CowManagement" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Cow To Firm </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-action="CowList" asp-controller="CowManagement" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>CowList</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
                                     Vaccine
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -242,30 +266,7 @@
 
 
                             </ul>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Cow
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-action="Create" asp-controller="CowManagement" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Cow Create</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-action="CowList" asp-controller="CowManagement" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>CowList</p>
-                                    </a>
-                                </li>
-
-
-                            </ul>
+                        
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -342,7 +343,7 @@
                             </ul>
                         <li class="nav-item">
                         <li class="nav-item">
-                            <form asp-action="dairyreport" asp-controller="Report" method="get" style="width:100%;">
+                            <form asp-action="MonthlyReport" asp-controller="Report" method="get" style="width:100%;">
                                 <button type="submit" class="btn btn-primary w-100 text-left" style="color:#fff;">
                                     <i class="fas fa-file-alt"></i>
                                     <span style="margin-left: 8px;">Report</span>

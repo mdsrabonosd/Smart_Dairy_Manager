@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model Smart_Dairy_Manager.ViewModel.ReportItemVM
+
+
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">FoodAmmount</th>
+            <th scope="col">MilkCollection</th>
+            <th scope="col">VaccineCost</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>@Model.FoodAmmount</td>
+            <td>@Model.MilkCollection</td>
+            <td>@Model.VaccineCost</td>
+          
+        </tr>
+      
+    </tbody>
+</table>
+

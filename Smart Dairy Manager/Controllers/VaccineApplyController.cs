@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Smart_Dairy_Manager.Data;
 using Smart_Dairy_Manager.Data_model;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Smart_Dairy_Manager.Controllers
 {
@@ -34,6 +35,19 @@ namespace Smart_Dairy_Manager.Controllers
             var data = _dbContext.VaccineApplies.ToList();
 
             return View(data);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var data = _dbContext.VaccineApplies.FirstOrDefault(x => x.VaccineApplyId == id);
+            return View(data);
+        }
+        [HttpPost]
+        public IActionResult Edit( VaccineApply obj)
+        {
+            _dbContext.VaccineApplies.Update(obj);
+            _dbContext.SaveChanges();
+            return RedirectToAction("ApplyList");
         }
 
     }
