@@ -9,6 +9,7 @@
 
                 <th scope="col">#</th>
                 <th scope="col">CowId</th>
+                <th scope="col">Apply Date</th>
                 <th scope="col">ApplyAmmount</th>
                 <th scope="col">VaccineApplyMonth</th>
                 <th scope="col">VaccineApplyDay</th>
@@ -22,6 +23,7 @@
                 <tr class="text-center align-middle">
                     <td>@item.VaccineApplyId</td>
                     <td>@item.CowId</td>
+                    <td>@item.Applydate</td>
                     <td>@item.ApplyAmmount</td>
                     <td>@item.VaccineApplyMonth</td>
                     <td>@item.VaccineApplyDay</td>
@@ -29,15 +31,18 @@
 
                     <td>
                        
-                        <a asp-action="Edit" asp-route-id="@item.VaccineApplyId" class="btn btn-sm btn-primary">
+                        <a asp-action="Edit" asp-route-id="@item.VaccineApplyId" class="btn btn-primary">
                             <i class="fas fa-trash-alt"></i> Edit
                         </a>
-                        <a asp-action="Delete" asp-route-id="" class="btn btn-sm btn-danger">
+                       
+                        <a asp-action="Delete" asp-route-id="item.VaccineApplyId" class="btn btn-sm btn-sm btn-danger">
                             <i class="fas fa-trash-alt"></i> Delete
-                        </a>
+                        </a> 
+                        @* 
                         <a asp-action="Details" asp-route-id="" class="btn btn-sm btn btn-success">
                             <i class="fas fa-trash-alt"></i> Details
-                        </a>
+                        </a> *@
+
                     </td>
 
 
