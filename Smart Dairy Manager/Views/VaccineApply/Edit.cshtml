@@ -21,10 +21,12 @@
 
                     <h3 class="text-center mb-4">Add Vaccine Apply Data</h3>
 
-                    <input type="hidden" asp-for="@Model.VaccineApplyId">
+                   
 
 
                     <form asp-action="Edit" asp-controller="VaccineApply" method="post">
+
+                        <input type="hidden" asp-for="@Model.VaccineApplyId">
 
                         <div class="form-group mb-3">
                             <label for="VaccineId">Vaccine ID</label>
