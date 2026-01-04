@@ -4,26 +4,139 @@
 
 @model Smart_Dairy_Manager.ViewModel.ReportItemVM
 
+<div class="container mt-5">
 
+    <!-- Header + Search -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold text-primary">📊 Dairy Monthly Expense Report</h3>
 
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">FoodAmmount</th>
-            <th scope="col">MilkCollection</th>
-            <th scope="col">VaccineCost</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>@Model.FoodAmmount</td>
-            <td>@Model.MilkCollection</td>
-            <td>@Model.VaccineCost</td>
-          
-        </tr>
-      
-    </tbody>
-</table>
+        <input type="text"
+               id="searchInput"
+               class="form-control w-25 shadow-sm"
+               placeholder="Search..."
+               onkeyup="searchTable()" />
+    </div>
 
+    <!-- Report Card -->
+    <div id="printArea" class="card shadow-lg rounded-4">
+        <div class="card-body">
+
+            <h5 class="text-center mb-4 text-secondary">
+                Summary for <strong>@Model.DateTime?.ToString("MMMM yyyy")</strong>
+            </h5>
+
+            <table class="table table-hover table-bordered text-center" id="reportTable">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Date</th>
+                        <th>Food Amount (kg)</th>
+                        <th>Milk Collection (L)</th>
+                        <th>Vaccine Apply Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>@Model.DateTime?.ToString("dd MMMM yyyy")</td>
+                        <td>@Model.FoodAmmount</td>
+                        <td>@Model.MilkCollection</td>
+                        <td>@Model.VaccineAmount</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Floating Action Buttons -->
+<div class="action-buttons">
+    <button class="btn btn-primary" onclick="printReport()">🖨 Print</button>
+    <button class="btn btn-danger" onclick="downloadPDF()">📄 PDF</button>
+    <button class="btn btn-success" onclick="downloadExcel()">📊 Excel</button>
+</div>
+
+<!-- ================= STYLE ================= -->
+<style>
+    body {
+        background-color: #f4f6f9;
+    }
+
+    .action-buttons {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        display: flex;
+        gap: 10px;
+        z-index: 1000;
+    }
+
+        .action-buttons button {
+            border-radius: 30px;
+            padding: 10px 22px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            font-size: 15px;
+        }
+
+    table th, table td {
+        vertical-align: middle;
+        font-size: 15px;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: rgba(0, 123, 255, 0.1);
+    }
+</style>
+
+<!-- ================= LIBRARIES ================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+    // Search
+    function searchTable() {
+        var input = document.getElementById("searchInput").value.toLowerCase();
+        var rows = document.querySelectorAll("#reportTable tbody tr");
+
+        rows.forEach(row => {
+            row.style.display = row.innerText.toLowerCase().includes(input) ? "" : "none";
+        });
+    }
+
+    // Print
+    function printReport() {
+        var content = document.getElementById("printArea").innerHTML;
+        var original = document.body.innerHTML;
+
+        document.body.innerHTML = content;
+        window.print();
+        document.body.innerHTML = original;
+        location.reload();
+    }
+
+    // PDF Download
+    function downloadPDF() {
+        var element = document.getElementById("printArea");
+
+        html2pdf()
+            .set({
+                margin: 0.5,
+                filename: 'Dairy_Report.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            })
+            .from(element)
+            .save();
+    }
+
+    // Excel Download
+    function downloadExcel() {
+        var table = document.getElementById("reportTable");
+        var wb = XLSX.utils.table_to_book(table, { sheet: "Monthly Report" });
+        XLSX.writeFile(wb, "Dairy_Monthly_Report.xlsx");
+    }
+</script>

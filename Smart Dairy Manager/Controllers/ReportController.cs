@@ -19,22 +19,29 @@ public class ReportController : Controller
 
         var ReportVM = new ReportItemVM();
 
-        // Example query for the month of the provided date
+        ReportVM.DateTime = date;
+
+        // Food Amount sum
         ReportVM.FoodAmmount = _context.FeedManagements
-                                .Where(f => f.FeedingTime.Month == date.Value.Month && f.FeedingTime.Year == date.Value.Year)
-                                .Sum(f => f.Quantity);
+                                .Where(f => f.FeedingTime.Month == date.Value.Month
+                                         && f.FeedingTime.Year == date.Value.Year)
+                                .Sum(f => (double?)f.Quantity) ?? 0;
 
+        // Milk Collection sum
         ReportVM.MilkCollection = _context.MilkCollections
-                                    .Where(m => m.Date.Month == date.Value.Month && m.Date.Year == date.Value.Year)
-                                    .Sum(m => m.TotalYield);
+                                    .Where(m => m.Date.Month == date.Value.Month
+                                             && m.Date.Year == date.Value.Year)
+                                    .Sum(m => (double?)m.TotalYield) ?? 0;
 
-        ReportVM.VaccineCost = _context.VaccineApplies
-                                    .Where(n => n.Applydate.Month==date.Value.Month)
-                                   .Sum(n => n.ApplyAmmount);
-
+        // Vaccine sum
+        ReportVM.VaccineAmount = _context.VaccineApplies
+                                    .Where(n => n.Applydate.Month == date.Value.Month
+                                             && n.Applydate.Year == date.Value.Year)
+                                    .Sum(n => (double?)n.ApplyAmmount) ?? 0;
 
         return View(ReportVM);
     }
+
 
 
 }
